@@ -25,7 +25,20 @@ db.connect((err) => {
 });
 
 
-//
+// presentiamo la pagina principale con un messaggio di benvenuto
 app.get("/", (req, res) => {
   res.json("Benvenuto nella libreria CRUD!");
+});
+
+//recuperiamo tutti i libri presenti nel database
+app.get("/books", (req, res) => {
+  const sql = "SELECT * FROM books";
+  db.query(sql, (err, results) => {
+    if (err) {
+      console.error("Error retrieving books:", err);
+      res.status(500).json({ error: "Error retrieving books" });
+      return;
+    }
+    res.json(results);
+  });
 });
