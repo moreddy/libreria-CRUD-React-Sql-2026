@@ -30,6 +30,9 @@ app.get("/", (req, res) => {
   res.json("Benvenuto nella libreria CRUD!");
 });
 
+
+
+//READ - recuperiamo tutti i libri presenti nel database
 //recuperiamo tutti i libri presenti nel database
 app.get("/books", (req, res) => {
   const sql = "SELECT * FROM books";
